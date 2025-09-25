@@ -30,7 +30,7 @@ const Ham = ({ isOpen, onChange }: HamProps) => {
 					<span></span>
 					<span></span>
 				</div>
-				<p className="menu-text font-mont font-extrabold text-lg leading-tight tracking-wider">MENU</p>
+				<p className="menu-text font-mont text-lg leading-tight font-extrabold tracking-wider">MENU</p>
 			</label>
 		</Wrapper>
 	);

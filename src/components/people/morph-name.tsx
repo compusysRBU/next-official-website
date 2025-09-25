@@ -58,7 +58,6 @@ const MorphName = ({ role, name }: { role: string; name: string }) => {
 				padding={50}
 				disabled={false}
 				magnetStrength={10}
-				
 				className="flex w-full items-center justify-center"
 			>
 				<p className="font-grotesk flex w-full items-center justify-center rounded-full border-2 border-zinc-950 bg-white px-4 py-2 text-sm font-semibold">
