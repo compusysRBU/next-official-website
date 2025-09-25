@@ -16,7 +16,7 @@ const eslintConfig = [
 			semi: ["error"],
 			quotes: ["error", "double"],
 			"prefer-arrow-callback": ["error"],
-			"prefer-template-literals": ["error"],
+			"prefer-template": ["error"], // Changed from "prefer-template-literals"
 		},
 	}),
 ];

@@ -1,7 +1,6 @@
 node_modules/
 *.config.js
 *.config.cjs
-*.config.mjs
 *.config.ts
 *.conf.js
 *.conf.cjs
