@@ -54,7 +54,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-		<body>
+		<body
+		className={`${geistSans.variable} ${geistMono.variable} ${spaceMono.variable} ${spaceGrotesk.variable} ${sugar.variable} ${chewy.variable} ${mont.variable} antialiased`}>
 			<LenisProvider>
 			<div className="min-h-screen w-full">
 				<div className="sticky top-0 z-50 mb-12 w-full">
