@@ -99,9 +99,9 @@ export default function PeoplePage() {
 							Our <span className="font-sugar text-3xl">Technical</span> visionaries
 						</h3>
 						<p className="mb-2">
-							Our <span className="font-bold">brilliant team</span> of tech enthusiasts. They're the ones
-							who put the <span className="font-bold">C</span> in CSE and will be leading our department's
-							innovations this year!
+							Our <span className="font-bold">brilliant team</span> of tech enthusiasts. They&apos;re the
+							ones who put the <span className="font-bold">C</span> in CSE and will be leading our
+							department&apos;s innovations this year!
 						</p>
 					</div>
 				</div>
@@ -114,7 +114,7 @@ export default function PeoplePage() {
 						Our <span className="font-sugar text-[#f97028]">Co-Heads</span>
 					</h2>
 					<p className="font-grotesk mt-4 text-center text-lg">
-						Meet the amazing team that will be leading our department's various initiatives
+						Meet the amazing team that will be leading our department&apos;s various initiatives
 					</p>
 				</div>
 
