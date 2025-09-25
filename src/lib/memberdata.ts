@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Array of color combinations for background and name tags
 export const colorPairs = [
 	{ bg: "bg-[#62b6cb]", tag: "bg-[#1b4965]" },

@@ -3,7 +3,7 @@ import { CustomLink } from "@/components/ui/link";
 
 const Hero = () => {
 	return (
-		<div className="hero-container mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 md:py-12 lg:py-16 mb-20">
+		<div className="hero-container mx-auto mb-20 w-full max-w-5xl px-4 py-8 sm:px-6 md:py-12 lg:py-16">
 			<div className="flex w-full flex-col items-center space-y-4 text-center sm:space-y-6">
 				<h2 className="text-primary-foreground font-grotesk text-4xl leading-tight font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
 					Experience the fusion of{" "}
