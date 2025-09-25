@@ -19,8 +19,8 @@ export default function NotFound() {
 				</h2>
 
 				<p className="font-mono-two text-muted-foreground text-lg">
-					Oops! The page you're looking for seems to have wandered off into the digital abyss. Let's get you
-					back to exploring the fusion of Technology & Culture.
+					Oops! The page you&apos;re looking for seems to have wandered off into the digital abyss. Let&apos;s
+					get you back to exploring the fusion of Technology & Culture.
 				</p>
 
 				<div className="mt-4 flex w-full flex-col justify-center gap-4 font-sans sm:flex-row sm:space-x-4">
