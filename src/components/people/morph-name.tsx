@@ -1,71 +1,66 @@
-// "use client";
-// import { useState } from "react";
-// import Magnet from "../Magnet";
-
-// const MorphName = ({ role, name }: { role: string; name: string }) => {
-// 	const [text, setText] = useState(name);
-// 	return (
-// 		<button onMouseEnter={() => setText(role)} onMouseLeave={() => setText(name)} className="w-full">
-// 			<Magnet
-// 				padding={50}
-// 				disabled={false}
-// 				magnetStrength={10}
-// 				className="flex w-full items-center justify-center"
-// 			>
-// 				<p className="font-grotesk flex w-full items-center justify-center rounded-full border-2 border-zinc-950 bg-white px-4 py-2 text-sm font-semibold">
-// 					{text}
-// 				</p>
-// 			</Magnet>
-// 		</button>
-// 	);
-// };
-
-// export default MorphName;
-
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Magnet from "../Magnet";
 
-const MorphName = ({ role, name }: { role: string; name: string }) => {
-	const [text, setText] = useState(name);
-	const timerRef = useRef<NodeJS.Timeout | null>(null);
+const MorphName = ({ role, name, id }: { role: string; name: string; id: string }) => {
+  const [text, setText] = useState(name);
+  const [isRole, setIsRole] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-	const handleMouseEnter = () => {
-		// Clear any existing timeout
-		if (timerRef.current) {
-			clearTimeout(timerRef.current);
-		}
-		// Set a new timeout for the enter delay
-		timerRef.current = setTimeout(() => {
-			setText(role);
-		}, 0); // 200ms delay on enter
-	};
+  const handleMouseEnter = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setText(role);
+      setIsRole(true);
+    }, 0);
+  };
 
-	const handleMouseLeave = () => {
-		// Clear any existing timeout
-		if (timerRef.current) {
-			clearTimeout(timerRef.current);
-		}
-		// Set a new timeout for the leave delay
-		timerRef.current = setTimeout(() => {
-			setText(name);
-		}, 600); // 300ms delay on leave
-	};
+  const handleMouseLeave = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setText(name);
+      setIsRole(false);
+    }, 100);
+  };
 
-	return (
-		<button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="w-full">
-			<Magnet
-				padding={50}
-				disabled={false}
-				magnetStrength={10}
-				className="flex w-full items-center justify-center"
-			>
-				<p className="font-grotesk flex w-full items-center justify-center rounded-full border-2 border-zinc-950 bg-white px-4 py-2 text-sm font-semibold">
-					{text}
-				</p>
-			</Magnet>
-		</button>
-	);
+  useEffect(() => {
+    const eventId = document.getElementById(id);
+    if (!eventId) return;
+    eventId.addEventListener("mouseenter", handleMouseEnter);
+    eventId.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      eventId.removeEventListener("mouseenter", handleMouseEnter);
+      eventId.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [id]);
+
+  return (
+    <button
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`w-full ${isRole ? "cursor-pointer scale-105" : "cursor-default"}`}
+    >
+      <Magnet
+        padding={50}
+        disabled={false}
+        magnetStrength={10}
+        triggerId={id}
+        className="flex w-full items-center justify-center"
+      >
+        <p
+          className={`font-grotesk flex w-full items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition-all duration-500 ease-out
+            ${
+              isRole
+                ? "bg-zinc-700 text-white border-white border-3 font-bold shadow-md blur-[.55px]"
+                : "bg-white text-black border-2 border-zinc-950 scale-100 shadow-none"
+            }
+          `}
+        >
+          {text}
+        </p>
+      </Magnet>
+    </button>
+  );
 };
 
 export default MorphName;
