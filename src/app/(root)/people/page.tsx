@@ -41,7 +41,7 @@ export default function PeoplePage() {
 				</div>
 
 				{/* First keynote speaker in column 2 */}
-				<div className="lg:col-span-1">
+				<div className="lg:col-span-1" id="co-heads">
 					<MemberCard
 						name={members[0].name}
 						role={members[0].role}
