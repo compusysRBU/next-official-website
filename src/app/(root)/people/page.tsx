@@ -1,8 +1,34 @@
 import { CoHeadCard } from "@/components/people/co-head-card";
 import { MemberCard } from "@/components/people/mem-card";
 import { coheadColorPairs, coheads, colorPairs, members } from "@/lib/memberdata";
+import { get3rdYears } from "@/lib/get3rdYears";
 
-export default function PeoplePage() {
+const roleOrder = [
+	"Vice President",
+	"Joint Secretary",
+	"Joint Treasurer",
+	"Events Co-Head",
+	"System and Design Co-Head",
+	"Technical Co-Head",
+	"Cultural Co-Head",
+	"Publicity Co-Head",
+	"Creatives Co-Head",
+	"Social Media Co-Head",
+	"Venue and Resources Co-Head",
+	"Social Activity Co-Head",
+	"Sports Co-Head",
+	"Photography Co-Head",
+	"Executive"
+];
+export default async function PeoplePage() {
+
+	const thirdYears = await get3rdYears();
+	const sortedThirdYears = thirdYears.slice().sort((a, b) => {
+		const aIndex = roleOrder.findIndex(role => a["Position/Role"].trim().toLowerCase().includes(role.toLowerCase()));
+		const bIndex = roleOrder.findIndex(role => b["Position/Role"].trim().toLowerCase().includes(role.toLowerCase()));
+		return aIndex - bIndex;
+	});
+
 	return (
 		<div className="mx-auto h-full w-full max-w-7xl px-4 py-12">
 			<div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -52,6 +78,7 @@ export default function PeoplePage() {
 						linkedinUrl={members[0].linkedinUrl}
 						className="mx-auto"
 					/>
+
 				</div>
 
 				{/* Another featured speaker in column 3 */}
@@ -66,6 +93,7 @@ export default function PeoplePage() {
 						linkedinUrl={members[1].linkedinUrl}
 						className="mx-auto"
 					/>
+
 				</div>
 			</div>
 
@@ -84,6 +112,7 @@ export default function PeoplePage() {
 							linkedinUrl={member.linkedinUrl}
 							className="mx-auto"
 						/>
+
 					</div>
 				))}
 			</div>
@@ -151,16 +180,16 @@ export default function PeoplePage() {
 					{/* Right side - Co-heads cards */}
 					<div className="lg:col-span-3">
 						<div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-							{coheads.map((cohead, idx) => (
+							{sortedThirdYears.map((cohead, idx) => (
 								<div key={`cohead-${idx}`} className={`w-full ${idx % 3 === 1 ? "md:mt-8" : ""}`}>
 									<CoHeadCard
-										name={cohead.name}
-										role={cohead.role}
-										imageUrl={cohead.image}
+										name={cohead["Full Name"]}
+										role={cohead["Position/Role"]}
+										imageUrl={cohead["Upload Your Front-Facing Photo (HD, Casual/Traditional/Semi-Formal Attire)  "]}
 										backgroundColor={coheadColorPairs[idx % coheadColorPairs.length].bg}
 										nameTagColor={coheadColorPairs[idx % coheadColorPairs.length].tag}
-										instagramUrl={cohead.instagramUrl}
-										linkedinUrl={cohead.linkedinUrl}
+										instagramUrl={cohead["Instagram ID"]}
+										linkedinUrl={cohead["Linkedin ID"]}
 									/>
 								</div>
 							))}
