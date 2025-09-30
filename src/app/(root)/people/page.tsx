@@ -1,7 +1,7 @@
 import { CoHeadCard } from "@/components/people/co-head-card";
 import { MemberCard } from "@/components/people/mem-card";
-import { coheadColorPairs, coheads, colorPairs, members } from "@/lib/memberdata";
 import { get3rdYears } from "@/lib/get3rdYears";
+import { coheadColorPairs, colorPairs, members } from "@/lib/memberdata";
 
 const roleOrder = [
 	"Vice President",
@@ -18,14 +18,17 @@ const roleOrder = [
 	"Social Activity Co-Head",
 	"Sports Co-Head",
 	"Photography Co-Head",
-	"Executive"
+	"Executive",
 ];
 export default async function PeoplePage() {
-
 	const thirdYears = await get3rdYears();
 	const sortedThirdYears = thirdYears.slice().sort((a, b) => {
-		const aIndex = roleOrder.findIndex(role => a["Position/Role"].trim().toLowerCase().includes(role.toLowerCase()));
-		const bIndex = roleOrder.findIndex(role => b["Position/Role"].trim().toLowerCase().includes(role.toLowerCase()));
+		const aIndex = roleOrder.findIndex((role) =>
+			a["Position/Role"].trim().toLowerCase().includes(role.toLowerCase())
+		);
+		const bIndex = roleOrder.findIndex((role) =>
+			b["Position/Role"].trim().toLowerCase().includes(role.toLowerCase())
+		);
 		return aIndex - bIndex;
 	});
 
@@ -78,7 +81,6 @@ export default async function PeoplePage() {
 						linkedinUrl={members[0].linkedinUrl}
 						className="mx-auto"
 					/>
-
 				</div>
 
 				{/* Another featured speaker in column 3 */}
@@ -93,7 +95,6 @@ export default async function PeoplePage() {
 						linkedinUrl={members[1].linkedinUrl}
 						className="mx-auto"
 					/>
-
 				</div>
 			</div>
 
@@ -112,7 +113,6 @@ export default async function PeoplePage() {
 							linkedinUrl={member.linkedinUrl}
 							className="mx-auto"
 						/>
-
 					</div>
 				))}
 			</div>
@@ -185,7 +185,11 @@ export default async function PeoplePage() {
 									<CoHeadCard
 										name={cohead["Full Name"]}
 										role={cohead["Position/Role"]}
-										imageUrl={cohead["Upload Your Front-Facing Photo (HD, Casual/Traditional/Semi-Formal Attire)  "]}
+										imageUrl={
+											cohead[
+												"Upload Your Front-Facing Photo (HD, Casual/Traditional/Semi-Formal Attire)  "
+											]
+										}
 										backgroundColor={coheadColorPairs[idx % coheadColorPairs.length].bg}
 										nameTagColor={coheadColorPairs[idx % coheadColorPairs.length].tag}
 										instagramUrl={cohead["Instagram ID"]}

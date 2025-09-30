@@ -9,13 +9,13 @@ import { eventItems } from "@/lib/event-data";
 
 export default function Home() {
 	return (
-		<div className="min-h-screen w-full flex flex-col items-center justify-center max-w-7xl mx-auto p-2 text-center">
+		<div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center p-2 text-center">
 			<Hero />
 			<About />
 
 			<div className="mb-80 sm:mb-40 md:mb-32 lg:mb-28" />
 
-			<section className="mx-auto w-full flex justify-center" id="highlights">
+			<section className="mx-auto flex w-full justify-center" id="highlights">
 				<ScrollStack
 					className="relative z-10 w-full max-w-3xl sm:mx-auto"
 					cardHeight="40rem"
@@ -61,7 +61,7 @@ export default function Home() {
 				</ScrollStack>
 			</section>
 
-			<div className="mt-12 h-screen w-full flex justify-center items-center px-4 sm:mt-16 sm:px-6 lg:mt-20 lg:px-8">
+			<div className="mt-12 flex h-screen w-full items-center justify-center px-4 sm:mt-16 sm:px-6 lg:mt-20 lg:px-8">
 				<div className="text-center text-gray-600">End of event stories</div>
 			</div>
 		</div>

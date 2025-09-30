@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 import NameBadge from "./name-badge";
