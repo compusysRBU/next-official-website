@@ -26,7 +26,7 @@ export default function NotFound() {
 				<div className="mt-4 flex w-full flex-col justify-center gap-4 font-sans sm:flex-row sm:space-x-4">
 					<div className="group relative">
 						<div className="relative z-30 transition-transform duration-100 group-active:translate-x-0.5 group-active:translate-y-0.5 sm:group-active:translate-y-1">
-							<CustomLink href="/" variant="default" size="lg" className="w-full sm:w-auto text-white">
+							<CustomLink href="/" variant="default" size="lg" className="w-full text-white sm:w-auto">
 								Return Home
 							</CustomLink>
 						</div>
