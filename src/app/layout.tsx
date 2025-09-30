@@ -59,10 +59,10 @@ export default function RootLayout({
 			>
 				<LenisProvider>
 					<div className="min-h-screen w-full">
-						<div className="sticky top-0 z-50 mb-12 w-full">
+						<div className="sticky top-0 z-50 w-full">
 							<Navbar />
 						</div>
-						<div className="container mx-auto max-w-7xl p-2">
+						<div className="container mx-auto ">
 							<main>{children}</main>
 						</div>
 					</div>
