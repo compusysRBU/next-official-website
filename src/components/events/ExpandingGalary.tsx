@@ -20,6 +20,7 @@ const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(images.length);
+  const [offset, setOffset] = useState<{ [key: number]: { x: number; y: number } }>({});
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,32 +41,57 @@ const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({
 
   const visibleImages = images.slice(0, visibleCount);
 
+    // Handle pointer movement
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    idx: number
+  ) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 5; // -10px to +10px
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 5;
+    setOffset((prev) => ({ ...prev, [idx]: { x, y } }));
+  };
+
+
   return (
-    <div className="flex w-full h-[400px] overflow-hidden">
+    <div className="flex w-full h-[900px] overflow-hidden p-0">
       {visibleImages.map((img, idx) => {
         const isHovered = idx === hoveredIndex;
         const flexGrow = isHovered ? expandRatio : 1;
+        const shift = offset[idx]
+          ? { x: offset[idx].x, y: offset[idx].y }
+          : { x: 0, y: 0 };
 
         return (
           <div
             key={idx}
-            className="relative h-full overflow-hidden transition-all duration-500 ease-in-out"
+            className="relative h-full w-full overflow-hidden transition-all duration-500 ease-in-out"
             style={{
               flexGrow,
               flexBasis: 0,
             }}
             onMouseEnter={() => setHoveredIndex(idx)}
-            onMouseLeave={() => setHoveredIndex(null)}
+            onMouseMove={(e) => handleMouseMove(e, idx)}
+            onMouseLeave={() => {
+              setHoveredIndex(null);
+              setOffset((prev) => ({ ...prev, [idx]: { x: 0, y: 0 } }));
+            }}
           >
             <Image
               src={img.src}
               alt={img.alt ?? `Image ${idx + 1}`}
               fill
-              className="object-cover"
+              className="object-cover "
+              style={{
+                transform: `translate(${shift.x}px, ${shift.y}px) scale(${
+                  isHovered ? 1.05 : 1
+                })`,
+                transformOrigin: "center",
+              }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = fallbackSrc;
-              }}
+              }}  
             />
           </div>
         );
