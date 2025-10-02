@@ -27,11 +27,11 @@ const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({
 			if (window.innerWidth >= 1280) {
 				setVisibleCount(12);
 			} else if (window.innerWidth >= 1024) {
-				setVisibleCount(8);
+				setVisibleCount(10);
 			} else if (window.innerWidth >= 768) {
-				setVisibleCount(6);
+				setVisibleCount(8);
 			} else {
-				setVisibleCount(4);
+				setVisibleCount(6);
 			}
 		};
 		handleResize();
@@ -44,13 +44,16 @@ const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({
 	// Handle pointer movement
 	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, idx: number) => {
 		const rect = e.currentTarget.getBoundingClientRect();
-		const x = ((e.clientX - rect.left) / rect.width - 0.5) * 5; // -10px to +10px
-		const y = ((e.clientY - rect.top) / rect.height - 0.5) * 5;
+		const x = ((e.clientX - rect.left) / rect.width - 0.5) * 7.5; // -10px to +10px
+		const y = ((e.clientY - rect.top) / rect.height - 0.5) * 7;
 		setOffset((prev) => ({ ...prev, [idx]: { x, y } }));
 	};
 
 	return (
-		<div className="flex h-[900px] w-full overflow-hidden p-0">
+		<div className="flex h-[120vh] w-full overflow-hidden p-0 "
+		style={{
+    filter: "sepia(40%) contrast(60%) brightness(110%)"
+  }}	>
 			{visibleImages.map((img, idx) => {
 				const isHovered = idx === hoveredIndex;
 				const flexGrow = isHovered ? expandRatio : 1;
@@ -77,9 +80,10 @@ const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({
 							fill
 							className="object-cover"
 							style={{
-								transform: `translate(${shift.x}px, ${shift.y}px) scale(${isHovered ? 1.05 : 1})`,
+								transform: `translate(${shift.x}px, ${shift.y}px) scale(${isHovered ? 1.05 : 1.05})`,
 								transformOrigin: "center",
 							}}
+							loading="lazy"
 							onError={(e) => {
 								const target = e.target as HTMLImageElement;
 								target.src = fallbackSrc;
