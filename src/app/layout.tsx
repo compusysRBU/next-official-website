@@ -62,7 +62,7 @@ export default function RootLayout({
 						<div className="sticky top-0 z-50 w-full">
 							<Navbar />
 						</div>
-						<div className="container mx-auto">
+						<div className="container min-w-[100%]">
 							<main>{children}</main>
 						</div>
 					</div>
