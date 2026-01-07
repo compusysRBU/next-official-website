@@ -1,9 +1,9 @@
-
 import ExpandingGallery from "@/components/events/ExpandingGalary";
 import SpreadImages from "@/components/events/SpreadImages";
 import { EventDetailSections } from "@/components/events/EventDetailSections";
 import { eventItems } from "@/lib/event-data";
 import ImageTrail from "@/components/ImageTrail";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 export default function EventPage() {
 	const images = [
 		{
@@ -45,7 +45,7 @@ export default function EventPage() {
 		<div className="h-full w-full">
 			<section className="relative">
 				<ExpandingGallery images={images} />
-				<div className="pointer-events-none absolute top-2/3 left-1/2 z-20 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 px-4 sm:px-8">
+				<div className="pointer-events-none absolute top-1/2 left-1/2 z-20 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 px-4 sm:px-8">
 					{/* <Image
 						src="/assets/manzar/manzar-event-image.svg"
 						alt="CSE Logo"
@@ -53,34 +53,53 @@ export default function EventPage() {
 						height={150}
 						className="h-auto w-full"
 					/> */}
-					<p className="mb-4 rotate-12 pr-4 text-right text-xl font-bold text-yellow-400 sm:pr-12 sm:text-2xl">
+					<p className="mb-8 rotate-12 pr-4 text-right text-xl font-bold text-yellow-400 sm:pr-12 sm:text-2xl">
 						coming soon...
 					</p>
 					<h1 className="font-serif text-4xl font-extrabold text-blue-500 sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
-						Polaris &apos; 25
+						Polaris &apos; 26
 					</h1>
 				</div>
 			</section>
 
 			<main className="mx-auto w-full max-w-7xl px-4 py-16 space-y-24">
-				<section className="grid grid-cols-1 items-start gap-10 lg:grid-cols-3">
-					<div className="space-y-4">
+							{/* <ScrollReveal
+				as="section"
+				className="mx-auto w-full max-w-7xl px-4 py-16 space-y-24"
+			> */}
+
+				<section className="flex justify-around items-center md:flex-row flex-col mx-auto">
+					<div className="space-y-4 min-w-1/2">
 						<h2 className="font-sugar text-5xl leading-tight text-zinc-950 sm:text-6xl">
 							Our <span className="font-chewy">2026</span>
 						</h2>
-						<h3 className="font-sugar relative text-3xl leading-tight sm:text-4xl md:text-5xl">
+						<h3 className="font-sugar flex justify-start items-center relative text-3xl leading-tight sm:text-4xl md:text-5xl">
+							<ScrollReveal
+							as ="div"
+							delay={0.1}>
+								
 							<div className="relative inline-block max-w-fit">
 								<span className="relative z-20 inline-block -rotate-2 rounded-sm border-2 border-zinc-950 bg-[#f3a20f] px-3 py-1 text-white sm:px-4 sm:py-2">
 									Event
 								</span>
 								<div className="absolute left-0 top-1 z-10 h-full w-full -rotate-2 rounded-sm bg-zinc-800/20 sm:top-2" />
 							</div>
-							<span className="ml-4  inline-block rotate-2 rounded-sm border-2 border-zinc-950 bg-[#f97028] px-3 py-1 text-white sm:-mt-4 sm:px-4 sm:py-2 md:-mt-5">
-								Lineup
-							</span>
+							</ScrollReveal>
+							<ScrollReveal
+							as ="div"
+							delay={0.2}>
+
+								
+							<div className="relative ml-4 inline-block max-w-fit sm:-mt-4 md:-mt-5">
+								<span className="relative z-20 inline-block rotate-2 rounded-sm border-2 border-zinc-950 bg-[#f97028] px-3 py-1 text-white sm:px-4 sm:py-2">
+									Lineup
+								</span>
+								<div className="absolute left-0 top-1 z-10 h-full w-full rotate-2 rounded-sm bg-zinc-800/20 sm:top-2" />
+							</div>
+							</ScrollReveal>
 
 						</h3>
-						<div className="font-grotesk mt-6 space-y-3 text-lg text-zinc-900">
+						<div className="font-grotesk mt-6 px-4 space-y-3 text-lg text-zinc-900">
 							<p>
 								Yep, we&apos;ve got <span className="font-bold">amazing events</span> lined up for the year
 								— from flagship fests to cosy in-house sessions.
@@ -91,12 +110,22 @@ export default function EventPage() {
 							<p>(More events and details to be announced!)</p>
 						</div>
 						<div className="relative mt-4 max-w-fit">
+							<ScrollReveal
+							as ="div"
+							delay={0.3}>
+
 							<div className="font-mono-two relative z-20 rounded-full border-2 border-zinc-950 bg-[#f489a3] px-6 py-2 text-sm font-semibold text-zinc-900">
 								Scroll to highlights
 							</div>
 							<div className="absolute left-1 top-1 z-10 h-full w-full rounded-full bg-[#cfc9b3]" />
+							</ScrollReveal>
 						</div>
 					</div>
+	                <ScrollReveal
+							as ="div"
+							delay={0.1}
+							className="flex h-full min-w-1/2 items-center justify-center lg:col-span-2"
+							>
 
 					<div className="flex h-full w-full items-center justify-center lg:col-span-2">
 						<div className="group relative w-full max-w-xl">
@@ -122,13 +151,15 @@ export default function EventPage() {
 										Tech × Culture
 									</span>
 									<span className="font-mono-two rounded-full bg-[#219ebc] px-3 py-1 text-xs font-semibold text-white">
-										2025 edition
+										2026 edition
 									</span>
 								</div>
 							</div>
 						</div>
 					</div>
+					</ScrollReveal>
 				</section>
+			{/* </ScrollReveal> */}
 
 				<section className="relative" id="highlights">
 					<div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
@@ -160,23 +191,23 @@ export default function EventPage() {
 					</p>
 				</section>
 			</main>
-			<div className="relative h-[500px]">
-  <ImageTrail
+			{/* <div className="relative h-[500px]">
+				<ImageTrail
 
-    items={[
-      "https://picsum.photos/id/287/300/300",
-      "https://picsum.photos/id/1001/300/300",
-      "https://picsum.photos/id/1025/300/300",
-      "https://picsum.photos/id/1026/300/300",
-      "https://picsum.photos/id/1027/300/300",
-      "https://picsum.photos/id/1028/300/300",
-      "https://picsum.photos/id/1029/300/300",
-      "https://picsum.photos/id/1030/300/300",
-      // ...
-    ]}
-    variant={1}
-  />
-</div>
+					items={[
+						"https://picsum.photos/id/287/300/300",
+						"https://picsum.photos/id/1001/300/300",
+						"https://picsum.photos/id/1025/300/300",
+						"https://picsum.photos/id/1026/300/300",
+						"https://picsum.photos/id/1027/300/300",
+						"https://picsum.photos/id/1028/300/300",
+						"https://picsum.photos/id/1029/300/300",
+						"https://picsum.photos/id/1030/300/300",
+						// ...
+					]}
+					variant={1}
+				/>
+			</div> */}
 		</div>
 	);
 }

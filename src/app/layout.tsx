@@ -1,4 +1,5 @@
 import LenisProvider from "@/components/LenisProvider";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/navbar";
 import type { Metadata } from "next";
 import { Chewy, Geist, Geist_Mono, Montserrat, Space_Grotesk, Space_Mono } from "next/font/google";
@@ -64,6 +65,7 @@ export default function RootLayout({
 						</div>
 						<div className="container min-w-[100%]">
 							<main>{children}</main>
+							<Footer />
 						</div>
 					</div>
 				</LenisProvider>
