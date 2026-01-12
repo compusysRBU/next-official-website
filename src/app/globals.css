@@ -1,3 +1,48 @@
+@keyframes spin-slow {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+	animation: spin-slow 16s linear infinite;
+}
+:hover.animate-spin-slow {
+	animation: spin-slow 32s linear infinite;
+}
+
+/* Base state */
+.wink-eye,
+.wink-smile,
+.wink-smile-part {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.right-eye-no-wink,
+.no-wink-smile {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+svg {
+  cursor: pointer;
+}
+
+path {
+  transition: opacity 0.25s ease;
+}
+
+/* Hover state on svg */
+svg:hover .wink-eye,
+svg:hover .wink-smile,
+svg:hover .wink-smile-part {
+  opacity: 1;
+}
+
+svg:hover .right-eye-no-wink,
+svg:hover .no-wink-smile {
+  opacity: 0;
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -142,4 +187,16 @@
 .sticker {
   transform: rotate(-8deg);
   filter: drop-shadow(0 10px 15px rgba(0,0,0,0.25));
+}
+
+
+element.style {
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(0%, 0.0263%) translate3d(0px, 0px, 0px);
+}
+
+.rotateSun animation {
+    transform: rotate(3.56465deg);
 }
