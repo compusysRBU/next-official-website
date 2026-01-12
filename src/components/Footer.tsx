@@ -24,7 +24,7 @@ const Footer = () => {
         const dy = e.clientY - centerY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        const radius = 260; // px
+        const radius = 560; // px
         const maxOffset = 24; // px
 
         if (distance < radius && distance > 0) {
@@ -103,15 +103,15 @@ const Footer = () => {
 
 
 
-                        <div className="space-y-3 pt-5">
+                        <div className="space-y-3 flex flex-col gap-2 justify-center items-center pt-5 px-32 md:px-0">
                             <h4 className="font-grotesk text-base font-semibold tracking-[0.18em] text-gray-800 uppercase">
                                 Stay Connected
                             </h4>
-                            <p className="font-mono-two text-xs text-zinc-700">
+                            <p className="font-mono-two text-xs text-zinc-700 px-2 md:px-0 text-center md:text-start">
                                 Follow our official channels for announcements, event updates, and
                                 behind-the-scenes from the CSE department.
                             </p>
-                            <div className="relative flex flex-wrap w-96 items-center gap-3 text-xs text-zinc-800">
+                            <div className="relative flex flex-wrap w-96 justify-center md:justify-start mt-4 items-center gap-3 text-xs text-zinc-800">
                                 <div className="relative">
                                     <div className="absolute top-0.5 left-0 z-0 h-full w-full  rounded-sm bg-zinc-800/20 sm:top-1 sm:-rotate-2 lg:top-2"></div>
                                     <Link className="relative rounded-sm border border-zinc-900 hover:bg-amber-400 bg-amber-500 px-4 py-2 font-grotesk text-white font-extrabold text-lg hover:border-amber-700 transition-all duration-300 hover:text-amber-700" href="https://www.instagram.com/cse.rbu/" target="_blank" rel="noopener noreferrer">
@@ -148,17 +148,15 @@ const Footer = () => {
                     </p>
                 </div>
 
-                <div className="absolute -bottom-44 left-0 right-0 overflow-hidden flex justify-center items-center h-96">
+                <div className="absolute -bottom-52 md:-bottom-44 left-0 right-0 overflow-hidden flex justify-center items-center h-96">
                     <motion.div
-                        initial={{ scale: 0.8 }}
+                        initial={{ scale: 0.6 }}
                     whileInView={{ scale: 1 }} className="animate-spin-slow">
                         <Image src={sun} alt="Sun" height={300} width={300} />
                     </motion.div>
                 </div>
                 <div className="absolute -bottom-32 left-0 right-0 overflow-hidden flex justify-center items-center h-96 pointer-events-none">
-                    <motion.div
-                    initial={{ scale: 0.8 }}
-                    whileInView={{ scale: 1 }}
+                    <div
                         ref={svgWrapperRef}
                         className="transition-transform duration-150 ease-out pointer-events-auto"
                         style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }}
@@ -216,7 +214,7 @@ const Footer = () => {
 
                         </svg>
 
-                    </motion.div>
+                    </div>
                 </div>
             </div>
 

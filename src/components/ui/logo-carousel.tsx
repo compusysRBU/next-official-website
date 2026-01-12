@@ -58,9 +58,9 @@ function LogoColumn({ logos, columnIndex, currentTime }: LogoColumnProps) {
                     <Image
                         src={currentLogo.src}
                         alt={currentLogo.name}
-                        width={100}
-                        height={100}
-                        className="object-contain"
+                        width={50}
+                        height={50}
+                        className="object-contain h-16 w-16 md:h-28 md:w-28"
                     />
                     {/* <p>{currentLogo.name}</p> */}
                 </motion.div>
