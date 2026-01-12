@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import sun from "../../public/sun.svg";
 import eye from "../../public/assets/eye.png";
+import {motion, scale} from "framer-motion";
 const currentYear = new Date().getFullYear();
 
 const Footer = () => {
@@ -23,7 +24,7 @@ const Footer = () => {
         const dy = e.clientY - centerY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        const radius = 160; // px
+        const radius = 260; // px
         const maxOffset = 24; // px
 
         if (distance < radius && distance > 0) {
@@ -148,12 +149,16 @@ const Footer = () => {
                 </div>
 
                 <div className="absolute -bottom-44 left-0 right-0 overflow-hidden flex justify-center items-center h-96">
-                    <div className="animate-spin-slow">
+                    <motion.div
+                        initial={{ scale: 0.8 }}
+                    whileInView={{ scale: 1 }} className="animate-spin-slow">
                         <Image src={sun} alt="Sun" height={300} width={300} />
-                    </div>
+                    </motion.div>
                 </div>
                 <div className="absolute -bottom-32 left-0 right-0 overflow-hidden flex justify-center items-center h-96 pointer-events-none">
-                    <div
+                    <motion.div
+                    initial={{ scale: 0.8 }}
+                    whileInView={{ scale: 1 }}
                         ref={svgWrapperRef}
                         className="transition-transform duration-150 ease-out pointer-events-auto"
                         style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }}
@@ -211,7 +216,7 @@ const Footer = () => {
 
                         </svg>
 
-                    </div>
+                    </motion.div>
                 </div>
             </div>
 
