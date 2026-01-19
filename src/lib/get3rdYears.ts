@@ -1,7 +1,7 @@
 export async function get3rdYears() {
 	try {
 		const response = await fetch(
-			"https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLhjLaX0BXiP9g5FJiTO2uKtK_4T8pmxD_y3ZoAayi93dHvebgBGE02bsj87wyndKSdp8hRkuLBkCWe8YLaRl3bhIuYjYXGYGRtKIUD_z-VzX01RAdL18MAaaljA1VzqUxebAMPbZeDqnEii6DjpOtGOj_kP0_mogtbBAjy6uyZUV7L4tYR-6yU7DfwPJ_-0mtpzP9xvlVoeCymVBlaJ5-4_YGsRqmMxZdvUQgv_VJBpV_L72v9KRNq0lz-zDzp30TLK3whqHxiE8PBsvv84TJTSWuWeLQ&lib=M6gvry7PBNUdiyzf-B_FHGxyeNKfa_QZS",
+			"https://script.google.com/macros/s/AKfycbyltonB2H1F9bm0SIMe9aWqvE6ClqS8KgtAAP4i0Q7XjG4BeznyuAfcIrA7EVLREpL-/exec",
 			{ cache: "no-store" }
 		);
 		if (!response.ok) {

@@ -150,8 +150,8 @@ export function EventDetailSections() {
                         }}
                     >
                         <div className={`${isReversed ? "md:order-2" : ""} space-y-4`}>
-                            <span className={`inline-flex items-center gap-2 rounded-full border-2 border-zinc-950 px-3 py-1 text-xs font-mono-two font-semibold uppercase tracking-[0.18em] text-zinc-900 ${accent.badge}`}>
-                                <span className="h-1.5 w-1.5 rounded-full bg-zinc-900" />
+                            <span className={`inline-flex items-center gap-2 rounded-full border-2 border-zinc-950 px-3 py-1 text-xs font-mono-two font-semibold uppercase tracking-[0.18em] text-white ${accent.badge}`}>
+                                <span className="h-1.5 w-1.5 rounded-full bg-white" />
                                 <span>{meta.tag}</span>
                                 <span className="hidden text-[0.65rem] opacity-80 sm:inline">{event.date}</span>
                             </span>

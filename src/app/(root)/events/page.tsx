@@ -2,8 +2,10 @@ import ExpandingGallery from "@/components/events/ExpandingGalary";
 import SpreadImages from "@/components/events/SpreadImages";
 import { EventDetailSections } from "@/components/events/EventDetailSections";
 import { eventItems } from "@/lib/event-data";
-import ImageTrail from "@/components/ImageTrail";
+
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import Image from "next/image";
+import polaris from "../../../../public/assets/polaris/polaris.webp";
 export default function EventPage() {
 	const images = [
 		{
@@ -11,23 +13,23 @@ export default function EventPage() {
 			alt: "Image 1",
 		},
 		{
-			src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1759074033/txclt2cijt5bryjev1lv.jpg",
+			src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1759074051/pudujdide0pzwakwygpe.jpg",
 			alt: "Image 2",
 		},
 		{
-			src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1759074035/lte4sbptoky8jnsuuo9t.jpg",
+			src: "/saket.jpg",
 			alt: "Image 3",
 		},
 		{
-			src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1759074040/tsxvvtpljivhmx84u9uz.jpg",
+			src: "/nikung.jpg",
 			alt: "Image 4",
 		},
 		{
-			src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1759074045/npl71ndbv21w7qusvfho.jpg",
+			src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1768845244/u2rdnlq4cshwjmjzjxut.png",
 			alt: "Image 5",
 		},
 		{
-			src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1759074051/pudujdide0pzwakwygpe.jpg",
+			src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1768838322/azfybyu3xagcupt8sud7.jpg",
 			alt: "Image 6",
 		},
 		{
@@ -35,10 +37,10 @@ export default function EventPage() {
 			alt: "Image 7",
 		},
 		{ src: "/ikshit.jpeg", alt: "Image 8" },
-		{ src: "/ikshit-2.jpeg", alt: "Image 9" },
-		{ src: "/ikshit.jpg", alt: "Image 10" },
-		{ src: "https://picsum.photos/id/1022/800/600", alt: "Image 11" },
-		{ src: "https://picsum.photos/id/1023/800/600", alt: "Image 12" },
+		{ src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1759074038/qadp0okagqreayyerqdg.jpg", alt: "Image 9" },
+		{ src: "/atharva.png", alt: "Image 10" },
+		{ src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1768839592/phc2cmkbngkfnk8dvx9a.png", alt: "Image 11" },
+		{ src: "https://res.cloudinary.com/dblbskhpi/image/upload/v1768834571/as3ynoqpzdirxibh3o6o.jpg", alt: "Image 12" },
 	];
 
 	return (
@@ -53,12 +55,13 @@ export default function EventPage() {
 						height={150}
 						className="h-auto w-full"
 					/> */}
-					<p className="mb-8 rotate-12 pr-4 text-right text-xl font-bold text-yellow-400 sm:pr-12 sm:text-2xl">
+					{/* <p className="mb-8 rotate-12 pr-4 text-right text-xl font-bold text-yellow-400 sm:pr-12 sm:text-2xl">
 						coming soon...
-					</p>
-					<h1 className="font-serif text-4xl font-extrabold text-blue-500 sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+					</p> */}
+					{/* <h1 className="font-serif text-4xl font-extrabold text-blue-500 sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
 						Polaris &apos; 26
-					</h1>
+					</h1> */}
+					<Image src={polaris} alt="Polaris Logo" width={500} height={150} className="h-auto w-full" />
 				</div>
 			</section>
 

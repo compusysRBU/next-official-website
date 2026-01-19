@@ -24,6 +24,18 @@ export function MemberCard({
 	linkedinUrl,
 	className,
 }: MemberCardProps) {
+	const buildInstagramUrl = (handle?: string) => {
+		if (!handle) return undefined;
+		const trimmed = handle.trim();
+		if (!trimmed) return undefined;
+		if (/^https?:\/\//i.test(trimmed)) return trimmed;
+		if (/^www\./i.test(trimmed)) return `https://${trimmed}`;
+		const username = trimmed.startsWith("@") ? trimmed.slice(1) : trimmed;
+		return `https://instagram.com/${username}`;
+	};
+
+	const instagramHref = buildInstagramUrl(instagramUrl);
+
 	return (
 		<div className={cn("relative w-full max-w-[24rem]", className)}>
 			{/* Main card container with two sections */}
@@ -67,8 +79,8 @@ export function MemberCard({
 				</div>
 			</div>
 			<div className="mx-auto flex h-fit w-full max-w-[76%] items-center justify-center gap-4 border-2 border-t-0 border-zinc-900 bg-zinc-50 py-2 sm:gap-6 sm:py-2.5">
-				{instagramUrl && (
-					<a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label={`${name}'s GitHub`}>
+				{instagramHref && (
+					<a href={instagramHref} target="_blank" rel="noopener noreferrer" aria-label={`${name}'s Instagram`}>
 						<AiFillInstagram className="h-6 w-6 text-purple-500 transition-colors duration-300 hover:text-purple-600 sm:h-7 sm:w-7 md:h-8 md:w-8" />
 					</a>
 				)}

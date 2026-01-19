@@ -87,7 +87,7 @@ const Navbar = () => {
 		{ name: "HOME", href: "/" },
 		{ name: "PEOPLE", href: "/people" },
 		{ name: "EVENTS", href: "/events" },
-		{ name: "CONTACT", href: "/contact" },
+		// { name: "CONTACT", href: "/contact" },
 	];
 
 	// Motion variants

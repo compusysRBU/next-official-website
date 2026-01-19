@@ -41,7 +41,7 @@ export default function DraggableSticker({
         offsetY: 0,
     });
 
-    const handlePointerMove = (event: PointerEvent) => {
+    const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
         const state = dragStateRef.current;
         if (!state.isDragging || !state.parentRect || !state.selfRect) return;
 
@@ -64,12 +64,12 @@ export default function DraggableSticker({
         target.style.bottom = "auto";
     };
 
-    const endDragging = (event?: PointerEvent) => {
+    const endDragging = () => {
         const state = dragStateRef.current;
         if (!state.isDragging) return;
 
         state.isDragging = false;
-        if (state.pointerId != null && stickerRef.current && event) {
+        if (state.pointerId != null && stickerRef.current) {
             try {
                 stickerRef.current.releasePointerCapture(state.pointerId);
             } catch {
@@ -78,8 +78,6 @@ export default function DraggableSticker({
         }
         state.pointerId = null;
 
-        window.removeEventListener("pointermove", handlePointerMove);
-        window.removeEventListener("pointerup", endDragging);
     };
 
     const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -104,21 +102,18 @@ export default function DraggableSticker({
             // capture can fail in some environments; dragging still works via window listeners
         }
 
-        window.addEventListener("pointermove", handlePointerMove);
-        window.addEventListener("pointerup", endDragging);
-
         // prevent text selection / image drag ghost
         event.preventDefault();
     };
 
-    const handleMouseEnter = () => {
-        if (!innerRef.current) return;
-        gsap.to(innerRef.current, {
-            scale: 1.08,
-            duration: 0.35,
-            ease: "elastic.out(1, 0.5)",
-        });
-    };
+    // const handleMouseEnter = () => {
+    //     if (!innerRef.current) return;
+    //     gsap.to(innerRef.current, {
+    //         scale: 1.08,
+    //         duration: 0.35,
+    //         ease: "elastic.out(1, 0.5)",
+    //     });
+    // };
 
     const handleMouseLeave = () => {
         if (!innerRef.current) return;
@@ -139,6 +134,9 @@ export default function DraggableSticker({
                 initialClassName,
             )}
             onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={endDragging}
+            onPointerCancel={endDragging}
             // onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
