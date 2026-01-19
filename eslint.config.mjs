@@ -6,19 +6,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
-	baseDirectory: __dirname,
+	baseDirectory:  __dirname,
 });
 
 const eslintConfig = [
-	...compat.config({
+	... compat.config({
 		extends: ["next/core-web-vitals", "next/typescript"],
 		rules: {
-			semi: ["error"],
+			semi:  ["error", "always"],  // ✅ Add "always" or "never"
 			quotes: ["error", "double"],
 			"prefer-arrow-callback": ["error"],
-			"prefer-template": ["error"], // Changed from "prefer-template-literals"
+			"prefer-template":  ["error"],
 		},
 	}),
 ];
 
 export default eslintConfig;
+
