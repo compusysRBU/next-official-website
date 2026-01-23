@@ -135,7 +135,7 @@ export default function EventPage() {
 							<div className="absolute -right-3 -bottom-3 z-0 h-full w-full rounded-3xl bg-[#cfc9b3]" />
 							<div className="relative z-10 rounded-3xl border-2 border-zinc-950 bg-[#ffb703] p-8 shadow-[rgba(20,20,22,0.25)_0_0.75em_0_0] transition-transform duration-300 group-hover:-translate-y-2 group-hover:rotate-1">
 								<p className="font-mono-two inline-flex rounded-full border border-zinc-950 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-900">
-									Coming soon
+									Just ended
 								</p>
 								<h3 className="mt-4 font-sugar text-4xl leading-tight text-zinc-950 sm:text-5xl">
 									Polaris &apos; <span className="font-chewy">26</span>
