@@ -1,3 +1,46 @@
+@keyframes spin-slow {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+	animation: spin-slow 16s linear infinite;
+}
+
+
+/* Base state */
+.wink-eye,
+.wink-smile,
+.wink-smile-part {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.right-eye-no-wink,
+.no-wink-smile {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+svg {
+  cursor: pointer;
+}
+
+path {
+  transition: opacity 0.25s ease;
+}
+
+/* Hover state on svg */
+svg:hover .wink-eye,
+svg:hover .wink-smile,
+svg:hover .wink-smile-part {
+  opacity: 1;
+}
+
+svg:hover .right-eye-no-wink,
+svg:hover .no-wink-smile {
+  opacity: 0;
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -138,4 +181,19 @@
 
 ::-webkit-scrollbar {
 	display: none;
+}
+.sticker {
+  transform: rotate(-8deg);
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.25));
+}
+
+
+/* Expanding gallery grayscale-on-hover images */
+.expanding-gallery-image {
+	filter: grayscale(0.8);
+	transition: filter 0.3s ease;
+}
+
+.expanding-gallery-image:hover {
+	filter: grayscale(0);
 }

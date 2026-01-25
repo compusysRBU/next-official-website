@@ -1,7 +1,9 @@
 import { CoHeadCard } from "@/components/people/co-head-card";
 import { MemberCard } from "@/components/people/mem-card";
 import { get3rdYears } from "@/lib/get3rdYears";
-import { coheadColorPairs, colorPairs, members } from "@/lib/memberdata";
+import { coheadColorPairs, colorPairs } from "@/lib/memberdata";
+import { get4thYears } from "@/lib/get4thYears";
+
 
 const roleOrder = [
 	"Vice President",
@@ -20,8 +22,39 @@ const roleOrder = [
 	"Photography Co-Head",
 	"Executive",
 ];
+
+const normalizeRoleKey = (value: string) =>
+	value
+		.toLowerCase()
+		.replace(/&/g, "and")
+		.replace(/head/g, "")
+		.replace(/[^a-z\s]/g, "")
+		.replace(/\s+/g, " ")
+		.trim();
+
 export default async function PeoplePage() {
 	const thirdYears = await get3rdYears();
+	const fourthYears = await get4thYears();
+
+	const fourthYearRoleOrder = [
+		"President",
+		"Secretary",
+		"Treasurer",
+		"Events Head",
+		"Technical Head",
+		"System and Design Head",
+		"Cultural Head",
+		"Publicity Head",
+		"Creatives Head",
+		"Social Media",
+		"Venue & Resources Head",
+		"Social Activity",
+		"Sports Secretary",
+		"Photography Head",
+		"Executive",
+	];
+
+	const fourthYearRoleOrderKeys = fourthYearRoleOrder.map((role) => normalizeRoleKey(role));
 	const sortedThirdYears = thirdYears.slice().sort((a, b) => {
 		const aIndex = roleOrder.findIndex((role) =>
 			a["Position/Role"].trim().toLowerCase().includes(role.toLowerCase())
@@ -30,6 +63,19 @@ export default async function PeoplePage() {
 			b["Position/Role"].trim().toLowerCase().includes(role.toLowerCase())
 		);
 		return aIndex - bIndex;
+	});
+
+	const sortedFourthYears = fourthYears.slice().sort((a, b) => {
+		const aKey = normalizeRoleKey(a["Position/Role"] ?? "");
+		const bKey = normalizeRoleKey(b["Position/Role"] ?? "");
+
+		const aIndex = fourthYearRoleOrderKeys.indexOf(aKey);
+		const bIndex = fourthYearRoleOrderKeys.indexOf(bKey);
+
+		const safeAIndex = aIndex === -1 ? Number.MAX_SAFE_INTEGER : aIndex;
+		const safeBIndex = bIndex === -1 ? Number.MAX_SAFE_INTEGER : bIndex;
+
+		return safeAIndex - safeBIndex;
 	});
 
 	return (
@@ -72,13 +118,17 @@ export default async function PeoplePage() {
 				{/* First keynote speaker in column 2 */}
 				<div className="lg:col-span-1" id="co-heads">
 					<MemberCard
-						name={members[0].name}
-						role={members[0].role}
+						name={sortedFourthYears[0]["Full Name"]}
+						role={sortedFourthYears[0]["Position/Role"]}
 						backgroundColor="bg-[#ffb703]"
 						nameTagColor="bg-[#fb8500]"
-						imageUrl={members[0].image}
-						instagramUrl={members[0].instagramUrl}
-						linkedinUrl={members[0].linkedinUrl}
+						imageUrl={
+							sortedFourthYears[0][
+							"Upload Your Front-Facing Photo (HD, Casual/Traditional/Semi-Formal Attire)  "
+							]
+						}
+						instagramUrl={sortedFourthYears[0]["Instagram ID"]}
+						linkedinUrl={sortedFourthYears[0]["Linkedin ID"]}
 						className="mx-auto"
 					/>
 				</div>
@@ -86,13 +136,17 @@ export default async function PeoplePage() {
 				{/* Another featured speaker in column 3 */}
 				<div className="lg:col-span-1">
 					<MemberCard
-						name={members[1].name}
-						role={members[1].role}
+						name={sortedFourthYears[1]["Full Name"]}
+						role={sortedFourthYears[1]["Position/Role"]}
 						backgroundColor="bg-[#ff7b00]"
 						nameTagColor="bg-[#f25c54]"
-						imageUrl={members[1].image}
-						instagramUrl={members[1].instagramUrl}
-						linkedinUrl={members[1].linkedinUrl}
+						imageUrl={
+							sortedFourthYears[1][
+							"Upload Your Front-Facing Photo (HD, Casual/Traditional/Semi-Formal Attire)  "
+							]
+						}
+						instagramUrl={sortedFourthYears[1]["Instagram ID"]}
+						linkedinUrl={sortedFourthYears[1]["Linkedin ID"]}
 						className="mx-auto"
 					/>
 				</div>
@@ -101,16 +155,20 @@ export default async function PeoplePage() {
 			{/* Rest of the speakers in a grid */}
 			<div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{/* Exclude the first two speakers that are already displayed above */}
-				{members.slice(2).map((member, idx) => (
+				{sortedFourthYears.slice(2).map((member, idx) => (
 					<div key={`speaker-${idx}`} className={`w-full ${idx % 3 === 1 ? "mt-16" : ""}`}>
 						<MemberCard
-							name={member.name}
-							role={member.role}
+							name={member["Full Name"]}
+							role={member["Position/Role"]}
 							backgroundColor={colorPairs[idx % colorPairs.length].bg}
 							nameTagColor={colorPairs[idx % colorPairs.length].tag}
-							imageUrl={member.image}
-							instagramUrl={member.instagramUrl}
-							linkedinUrl={member.linkedinUrl}
+							imageUrl={
+								member[
+								"Upload Your Front-Facing Photo (HD, Casual/Traditional/Semi-Formal Attire)  "
+								]
+							}
+							instagramUrl={member["Instagram ID"]}
+							linkedinUrl={member["Linkedin ID"]}
 							className="mx-auto"
 						/>
 					</div>
@@ -187,7 +245,7 @@ export default async function PeoplePage() {
 										role={cohead["Position/Role"]}
 										imageUrl={
 											cohead[
-												"Upload Your Front-Facing Photo (HD, Casual/Traditional/Semi-Formal Attire)  "
+											"Upload Your Front-Facing Photo (HD, Casual/Traditional/Semi-Formal Attire)  "
 											]
 										}
 										backgroundColor={coheadColorPairs[idx % coheadColorPairs.length].bg}

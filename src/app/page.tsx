@@ -6,7 +6,8 @@ import Hero from "@/components/home/hero";
 import "@/components/styles/ScrollStack.css";
 import ScrollStack, { ScrollStackItem } from "@/components/ui/scroll-stack";
 import { eventItems } from "@/lib/event-data";
-
+import { CustomLink } from "@/components/ui/link";
+import Chapters from "@/components/home/chapters";
 export default function Home() {
 	return (
 		<div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center p-2 text-center">
@@ -59,11 +60,28 @@ export default function Home() {
 						);
 					})}
 				</ScrollStack>
+				
 			</section>
+						<div className="group relative">
+						<div className="relative z-30 transition-transform duration-100 group-active:translate-x-0.5 group-active:translate-y-0.5 sm:group-active:translate-y-1">
+							<CustomLink
+								href="/events"
+								variant="default"
+								size="xxl"
+								className="w-full bg-[#39c2ff] text-lg text-white hover:bg-[#06a8f1] sm:w-auto"
+							>
+								Explore Events
+							</CustomLink>
+						</div>
+						<div className="absolute top-0.5 left-0.5 z-10 h-full w-full rounded-md bg-[#cfc9b3] transition-all duration-100 sm:top-1" />
+					</div>
 
-			<div className="mt-12 flex h-screen w-full items-center justify-center px-4 sm:mt-16 sm:px-6 lg:mt-20 lg:px-8">
-				<div className="text-center text-gray-600">End of event stories</div>
+			{/* Chatpers Section */}
+			<div className=" flex h-screen w-full items-center justify-center px-4 sm:px-6  lg:px-8">
+				{/* <div className="text-center text-gray-600">End of event stories</div> */}
+			<Chapters />
 			</div>
+
 		</div>
 	);
 }

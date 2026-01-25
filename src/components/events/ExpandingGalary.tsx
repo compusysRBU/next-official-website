@@ -50,10 +50,7 @@ const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({
 	};
 
 	return (
-		<div className="flex h-[120vh] w-full overflow-hidden p-0 "
-		style={{
-    filter: "sepia(40%) contrast(60%) brightness(110%)"
-  }}	>
+		<div className="flex h-[120vh] w-full overflow-hidden p-0">
 			{visibleImages.map((img, idx) => {
 				const isHovered = idx === hoveredIndex;
 				const flexGrow = isHovered ? expandRatio : 1;
@@ -78,7 +75,7 @@ const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({
 							src={img.src}
 							alt={img.alt ?? `Image ${idx + 1}`}
 							fill
-							className="object-cover"
+							className="expanding-gallery-image object-cover"
 							style={{
 								transform: `translate(${shift.x}px, ${shift.y}px) scale(${isHovered ? 1.05 : 1.05})`,
 								transformOrigin: "center",
